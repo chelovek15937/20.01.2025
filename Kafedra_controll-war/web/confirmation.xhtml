@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./template.xhtml">
+
+            <ui:define name="left">
+                <h3>choose your page</h3>
+                <h:form>
+                    <h:panelGrid columns="3" columnClasses="rightalign,leftalign,leftalign">
+                        <h:message for="salutation"/>
+                        <h:message for="salutation"/>
+                        <h:commandButton id="group" value="group"
+                                         action="LeftPage(group)" />
+                        <h:message for="salutation"/>
+                        <h:message for="salutation"/>
+                        <h:commandButton id="student" value="student"
+                                         action="LeftPage(student)" />
+                        <h:message for="salutation"/>
+                        <h:message for="salutation"/>
+                        <h:commandButton id="kafedra" value="kafedra"
+                                         action="LeftPage(kafedra)" />
+                        <h:message for="salutation"/>
+                        <h:message for="salutation"/>
+                        <h:commandButton id="conference" value="conference"
+                                         action="LeftPage(conference)" />
+                        <h:message for="salutation"/>
+                        <h:message for="salutation"/>
+                        <h:commandButton id="smoker" value="smoker"
+                                         action="LeftPage(smoker)" />
+                        <h:message for="salutation"/>
+                        <h:message for="salutation"/>
+                        <h:commandButton id="teacher" value="teacher"
+                                         action="LeftPage(teacher)" />
+                    </h:panelGrid>
+                </h:form>
+            </ui:define>
+            <ui:define name="top">
+                <h:form>
+                    <h:panelGrid columns="3" columnClasses="rightalign,leftalign,leftalign">
+                        <h:commandButton id="author" value="Author"
+                                         action="TopPage(authorization)" />
+                        <h:commandButton id="register" value="reg"
+                                         action="TopPage(registration)" />
+                    </h:panelGrid>
+                </h:form>
+                <h3>This is</h3>
+                <h2>Registration</h2>
+            </ui:define>
+            <ui:define name="content">
+                <h:form>    
+                    <h2>Confirmation Page</h2>
+                    <h:panelGrid columns="2"
+                                 columnClasses="rightalign-bold,leftalign">
+                        <h:outputText value="Salutation:"/>
+                        ${registrationBean.salutation}
+                        <h:outputText value="First Name:"/>
+                        ${registrationBean.firstName}
+                        <h:outputText value="Last Name:"/>
+                        ${registrationBean.lastName}
+                        <h:outputText value="Age:"/>
+                        ${registrationBean.age}
+                        <h:outputText value="Email Address:"/>
+                        ${registrationBean.email}
+                        <h:commandButton id="page1" value="page1"
+                                         action="page1" />
+                    </h:panelGrid>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+
+

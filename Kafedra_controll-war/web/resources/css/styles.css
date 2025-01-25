@@ -1,0 +1,97 @@
+/* Стили для h:selectOneMenu */
+h:selectOneMenu {
+  width: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+  color: #333;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+h:selectOneMenu:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 2px 2px 5px rgba(0,0,255,0.2);
+}
+
+h:selectOneMenu option {
+  background-color: white;
+  padding: 5px;
+}
+
+
+/* Стили для h:inputText */
+h:inputText {
+  width: 250px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #333;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+  transition: border-color 0.3s ease;
+}
+
+h:inputText:focus {
+  outline: none;
+  border-color: #28a745;
+  box-shadow: 2px 2px 5px rgba(0,128,0,0.2);
+}
+
+h:inputText::placeholder {
+  color: #999;
+}
+
+
+/* Стили для h:commandButton */
+h:commandButton {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+h:commandButton:hover {
+  background-color: #0069d9;
+}
+
+h:commandButton:active {
+  background-color: #0056b3;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+h:commandButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Дополнительные стили для улучшения визуального восприятия */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  margin: 500px auto;
+  padding: 200px;
+  border: 10px solid #eee;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+
+.form-container label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-container input,
+.form-container select {
+  margin-bottom: 15px;
+}

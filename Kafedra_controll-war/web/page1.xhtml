@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>CRUD</title>
+    </h:head>        
+    <h:body>
+        <ui:composition template="./template.xhtml">
+            <ui:define name="left">
+                <h3>choose your page</h3>
+                <h:form>
+                    <h:panelGrid columns="3" columnClasses="rightalign,leftalign,leftalign">
+                        <h:message for="salutation"/>
+                        <h:message for="salutation"/>
+                        <h:commandButton id="group" value="group"
+                                         action="LeftPage(group)" />
+                        <h:message for="salutation"/>
+                        <h:message for="salutation"/>
+                        <h:commandButton id="student" value="student"
+                                         action="LeftPage(student)" />
+                        <h:message for="salutation"/>
+                        <h:message for="salutation"/>
+                        <h:commandButton id="kafedra" value="kafedra"
+                                         action="LeftPage(kafedra)" />
+                        <h:message for="salutation"/>
+                        <h:message for="salutation"/>
+                        <h:commandButton id="conference" value="conference"
+                                         action="LeftPage(conference)" />
+                        <h:message for="salutation"/>
+                        <h:message for="salutation"/>
+                        <h:commandButton id="smoker" value="smoker"
+                                         action="LeftPage(smoker)" />
+                        <h:message for="salutation"/>
+                        <h:message for="salutation"/>
+                        <h:commandButton id="teacher" value="teacher"
+                                         action="LeftPage(teacher)" />
+                    </h:panelGrid>
+                </h:form>
+            </ui:define>
+            <ui:define name="top">
+                <h2>Welkome</h2>
+                <h:form>
+                    <h:panelGrid columns="3" columnClasses="rightalign,leftalign,leftalign">
+                        <h:commandButton id="author" value="Author"
+                                         action="TopPage(authorization)" />
+                        <h:commandButton id="register" value="reg"
+                                         action="TopPage(registration)" />
+                    </h:panelGrid>
+                </h:form>
+            </ui:define>
+            <ui:define name="content">
+                <h1>CRUD</h1>
+                <h:form>
+                    <h:panelGrid columns="12" cellpadding="5">
+                        <!--<h:outputText value="AI " />
+                        <p:inputText value="#{ConferenceController.ai}"/> -->
+                        <h:outputText value="Student " />
+                        <p:inputText value="#{ConferenceController.student}" />
+                        <h:outputText value="Teacher " />
+                        <p:inputText value="#{ConferenceController.teacher}"/>
+                        <p:commandButton value="Add" icon="fa fa-fw fa-plus" action="#{ConferenceController.createConference()}"/>
+                    </h:panelGrid>
+                </h:form>
+                <h:form  id="form">
+                    <p:dataTable value="#{ConferenceController.getAllConference()}" var="book" style="margin: 2em;" rowKey="#{conference.ai}">
+                        <p:column headerText="hashCode">
+                            <h:outputText value="#{ConferenceController.hashCode}"/>
+                        </p:column>
+                        <p:column headerText="Student">
+                            <h:outputText value="#{ConferenceController.student}"/>
+                        </p:column>
+                        <p:column headerText="Teacher">
+                            <h:outputText value="#{ConferenceController.teacher}"/>
+                        </p:column>
+                        <p:column headerText="toString">
+                            <h:outputText value="#{ConferenceController.toString}"/>
+                        </p:column>
+                        <p:column style="width:100px;text-align: center">
+                            <p:commandButton icon="fa fa-pencil" update=":form:conferenceEdit" oncomplete="PF('editDialog').show()">
+                                <f:setPropertyActionListener value="#{conference}" target="#{ConferenceController.selectedConference}"/>
+                            </p:commandButton>
+                            <p:commandButton action="#{ConferenceController.deleteConference(conference)}" icon="fa fa-trash"></p:commandButton>
+                        </p:column>
+                    </p:dataTable>
+                    <p:dialog header="Edit Book" widgetVar="editDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                        <p:outputPanel id="bookEdit" style="text-align:center;">
+                            <p:panelGrid  columns="2" rendered="#{not empty ConferenceController.selectedConference}" columnClasses="label,value">
+                                <h:outputText value="Name: " />
+                                <p:inputText value="#{ConferenceController.selectedConference.ai}" />
+                                <h:outputText value="Category: " />
+                                <p:inputText value="#{ConferenceController.selectedConference.hashCode}" />
+                                <h:outputText value="Author: " />
+                                <p:inputText value="#{ConferenceController.selectedConference.student}"/>
+                                <h:outputText value="Price: $" />
+                                <p:inputText value="#{ConferenceController.selectedConference.teacher}" />
+                                <h:outputText value="Year: " />
+                                <p:inputText value="#{ConferenceController.selectedConference.toString}" />
+                            </p:panelGrid>
+                            <p:commandButton value="Update" icon="fa fa-fw fa-pencil" action="#{ConferenceController.updateConference()}"/>
+                        </p:outputPanel>
+                    </p:dialog>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
